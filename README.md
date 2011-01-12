@@ -13,6 +13,11 @@ Do you take cream and sugar? If so then you might like some of our CoffeeScript 
  [sudo] npm install cream-and-sugar
 </pre>
 
+### Testing
+<pre>
+  cake test
+</pre>
+
 ## MIT License 
 
 Copyright © 2011 Sean McDaniel
