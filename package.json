@@ -1,0 +1,15 @@
+{
+  "name": "cream-and-sugar",
+  "description": "Delish additives for your CoffeeScripts.",
+  "version": "0.0.1",
+  "author": "Sean McDaniel <sean.mcdaniel@me.com>",
+  "contributors": [ 
+    {"name": "Sean McDaniel", "email": "sean.mcdaniel@me.com"}
+  ],
+  "dependencies": {
+    "coffee-script": ">= 1.0.0"
+  },
+  "keywords": ["framework", "node", "coffeescript"],
+  "directories": { "lib": "./lib" },
+  "engines": { "node": ">= 0.3.4" }
+}
