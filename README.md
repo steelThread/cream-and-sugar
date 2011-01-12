@@ -10,12 +10,12 @@ Do you take cream and sugar? If so then you might like some of our CoffeeScript 
 
 ### Installing
 <pre>
- [sudo] npm install cream-and-sugar
+ $[sudo] npm install cream-and-sugar
 </pre>
 
 ### Testing
 <pre>
-  cake test
+ $cake test
 </pre>
 
 ## MIT License 
