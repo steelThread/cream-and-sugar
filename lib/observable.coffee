@@ -11,7 +11,8 @@
 # The goal here is to ensure that listeners are really
 # registering for supported events.  This is just to head
 # off potential bugs early one.  In addition we add the 'un' 
-# sugar to EventEmitter.
+# sugar to EventEmitter and the ability to register multiple
+# listeners at once
 #
 class Observable extends EventEmitter
   constructor: (@events...) -> events.push 'newListener'
