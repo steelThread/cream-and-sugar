@@ -1,5 +1,5 @@
 #
-# observable.js: 
+# observable.coffee: small wrapper around node's EventEmitter 
 #
 # (C) 2011 Sean McDaniel
 # MIT LICENCE
@@ -14,18 +14,21 @@
 # sugar to EventEmitter.
 #
 class Observable extends EventEmitter
-  constructor: (@events...) ->
-    events.push 'newListener'
+  constructor: (@events...) -> events.push 'newListener'
   
   # 
   # allow attaching multiple listener at once
   #
   addListener: (event, listener) ->
-    @assert event
-    super event, listener
+    unless typeof event is 'object'
+      @assert event
+      super event, listener
+    else
+      for ev of event 
+        @addListener ev, event[ev]      
 
   #
-  # allow attaching multiple listeners at once
+  # on override with assert guard
   #
   on: (event, listener) -> @addListener event, listener
 
@@ -51,5 +54,10 @@ class Observable extends EventEmitter
   # determines if an event is supported
   #
   supports: (event) -> event in @events 
+
+  #
+  # removes all event listeners
+  #
+  purgeListeners: -> @removeAllListeners event for event in @events
 
 exports.Observable = Observable
