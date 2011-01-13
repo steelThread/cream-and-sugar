@@ -13,6 +13,15 @@ Do you take cream and sugar? If so then you might like some of our CoffeeScript 
  $[sudo] npm install cream-and-sugar
 </pre>
 
+Well... we take that back.  Until the feel that there is enough value here we
+are resisting the urge to publish to the npm public registry.  In the meantime
+
+<pre>
+  $git clone git@github.com:steelThread/cream-and-sugar.git
+  $cd cream-and-sugar
+  $[sudo] npm install  
+</pre>
+
 ### Using
 Simply
 <pre>
