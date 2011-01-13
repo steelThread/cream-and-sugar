@@ -7,7 +7,9 @@
 {EventEmitter} = require 'events'
 
 #
-#  Observable base type for OhOh CoffeeScript (blasphmey)
+#  Observable base type for OhOh CoffeeScript.  Blasphmey you 
+#  say. Well... perhaps but it's just so damn nice.
+#
 #  The goal here is to ensure that listeners are really
 #  registering for supported events.  This is just to head
 #  off potential bugs early one.  In addition we add the 'un' 
