@@ -3,7 +3,7 @@
 #############################################
 test 'function prototype', ->
   ok Function::createCallback?
-  ok Types.function Function::createCallback
+  ok Types.isFunction Function::createCallback
 
 test 'create callback', ->
   fn = ->

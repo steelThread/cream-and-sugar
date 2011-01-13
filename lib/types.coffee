@@ -7,14 +7,14 @@
 class Types
   constructor: ->
   
-  string:   (val) -> typeof val is 'string'
-  boolean:  (val) -> typeof val is 'boolean'
-  number:   (val) -> typeof val is 'number' and isFinite val
-  primitive:(val) -> @string(val) or @boolean(val) or @number(val)
-  date:     (val) -> @assert val, '[object Date]'
-  object:   (val) -> @assert val, '[object Object]'
-  function: (val) -> @assert val, '[object Function]'
-  array:    (val) -> @assert val, '[object Array]'
+  isString:   (val) -> typeof val is 'string'
+  isBoolean:  (val) -> typeof val is 'boolean'
+  isNumber:   (val) -> typeof val is 'number' and isFinite val
+  isPrimitive:(val) -> @isString(val) or @isBoolean(val) or @isNumber(val)
+  isDate:     (val) -> @assert val, '[object Date]'
+  isObject:   (val) -> @assert val, '[object Object]'
+  isFunction: (val) -> @assert val, '[object Function]'
+  isArray:    (val) -> @assert val, '[object Array]'
   
   assert: (val, expected) -> expected is toString.apply val
 

@@ -1,10 +1,12 @@
 #
 #  observable.coffee: small wrapper around node's EventEmitter 
 #
+#
 #  (C) 2011 Sean McDaniel
 #  MIT LICENCE
 #
 {EventEmitter} = require 'events'
+{Types} = require './types'
 
 #
 #  Observable base type for OhOh CoffeeScript.  Blasphmey you 
@@ -23,12 +25,11 @@ class Observable extends EventEmitter
   #  allow attaching multiple listener at once
   #
   addListener: (event, listener) ->
-    unless typeof event is 'object'
+    unless Types.isObject event
       @assert event
       super event, listener
     else
-      for ev of event 
-        @addListener ev, event[ev]      
+      @addListener ev, event[ev] for ev in event
 
   #
   #  on override with assert guard
@@ -51,7 +52,7 @@ class Observable extends EventEmitter
   #  asserts the event is supported
   #
   assert: (event) ->
-    throw new Error "#{event} is not a supported event" unless @supports event 
+    throw "#{event} is not a supported event" unless @supports event 
 
   #
   #  determines if an event is supported
