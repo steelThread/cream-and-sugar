@@ -15,38 +15,27 @@ unless Function::createCallback?
   Function::createCallback = ->
     args = arguments
     fn = this
-    return ->
-      return fn.apply fn, args
+    return -> return fn.apply fn, args
 
 #
 #  Creates a delegate that sets the scope of the call.  Also 
 #  supports either overriding or appending of arguments onto
 #  the call.
 #
-#createDelegate = (fn, scope, args, appendArgs) ->
+#unless Function::createDelegate?
   
 #
 #
 #
-#unless Function.prototype.createInterceptor?
-#  Trait.compose Function.prototype, Trait 
-#    createInterceptor: (fn, scope) ->#
-#     outter = this
-#      return outter if not Types.function fn
-#      return ->
-#        me = this
-#        args = arguments
-#        fn.target = me
-#        fn.method = this
-#        return -> fn.apply(scope ? me, args)
+#unless Function::createInterceptor?
           
 #
 #
 #
-#createSequence = ->
+#unless Function::sequence?
 
 #
 #
 #
-#defer = ->
+#unless Function::defer?
   
