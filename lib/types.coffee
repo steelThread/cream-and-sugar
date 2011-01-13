@@ -16,6 +16,6 @@ class Types
   function: (val) -> @assert val, '[object Function]'
   array:    (val) -> @assert val, '[object Array]'
   
-  assert: (val, expected) -> toString.apply(val) is expected
+  assert: (val, expected) -> expected is toString.apply val
 
-exports.Types = new Types
+exports.Types = Object.seal(new Types)
