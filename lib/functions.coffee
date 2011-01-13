@@ -26,10 +26,10 @@ Trait = require 'traits'
 #
 #
 #
-unless Function.prototype.createInterceptor?
-  Trait.compose Function.prototype, Trait 
-    createInterceptor: (fn, scope) ->
-	  method = this
+#unless Function.prototype.createInterceptor?
+#  Trait.compose Function.prototype, Trait 
+#    createInterceptor: (fn, scope) ->
+#	  method = this
 	  
       	
 

@@ -1,4 +1,4 @@
-{Types} = require '../lib/types'
+{Types} = require '../lib/index'
 
 #############################################
 test 'string', ->

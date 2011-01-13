@@ -1,4 +1,4 @@
-{Observable} = require '../lib/observable'
+{Observable} = require '../lib/index'
 
 class Fixture extends Observable
   constructor: -> super 'event', 'anotherEvent'
