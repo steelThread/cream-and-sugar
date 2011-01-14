@@ -17,10 +17,23 @@ test 'create callback', ->
 
 #############################################
 test 'create sequence', ->
-  hi  = (name) -> 
-    eq 'Fred', name
-    true
+  hi  = (arg) -> 
+    eq 'arg', arg
+    'first'
 
-  bye = (name) -> eq 'Fred', name
-  sequence = hi.createSequence bye
-  ok sequence 'Fred'
+  sequence = hi.createSequence (arg) -> eq 'arg', arg
+  eq 'first', sequence 'arg'
+
+#############################################
+test 'create sequence with scope', ->
+  class Fixture
+    constructor: ->
+    test: (scope) -> ok this is scope
+
+  fixture = new Fixture
+  scoped = (->).createSequence fixture.test, fixture
+  scoped fixture
+
+  scoped = (->).createSequence fixture.test
+  scoped global
+  
