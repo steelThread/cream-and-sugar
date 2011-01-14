@@ -28,7 +28,7 @@ class Observable extends EventEmitter
     unless Types.isObject event
       @assert event
       super event, listener
-    else
+    else 
       @addListener ev, event[ev] for ev in event
 
   #
@@ -51,7 +51,7 @@ class Observable extends EventEmitter
   #
   #  asserts the event is supported
   #
-  assert: (event) ->
+  assert: (event) -> 
     throw "#{event} is not a supported event" unless @supports event 
 
   #
