@@ -36,10 +36,10 @@ Simply
 ### Contribute
 
 If you want to contribute please feel free.  We (and by we I mean me) would appreciate any and all contributions.
-####
+
 Code  -> shoot me a pull request.
 Ideas -> write up a todo on the issues list.
-####
+
 
 ## MIT License 
 
