@@ -44,7 +44,7 @@ class Observable extends EventEmitter
     super event, listener
 
   #
-  #  removeListener sugar
+  #  removeListener sugar (mixin on parent?)
   #
   un: (event, listener) -> @removeListener event, listener
 

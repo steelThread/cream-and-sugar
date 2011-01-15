@@ -23,10 +23,8 @@ unless Function::createCallback?
 #  supports either overriding or appending of arguments onto
 #  the call.
 #
-join = (arguments, args) ->
-  Array::slice.call(arguments, 0).concat args
- 
 unless Function::createDelegate?
+  join = (arguments, args) -> Array::slice.call(arguments, 0).concat args
   Function::createDelegate = (scope = global, args = [], append = false) ->
     me = this
     -> me.apply scope, if append then join arguments, args else args 
@@ -49,7 +47,7 @@ unless Function::createInterceptor?
 #
 #  Create an advisor.  Similar to an interceptor except may
 #  change the arguments and return values of the advised
-#  function
+#  function.
 #         
 #unless Function::createAdvisor?
 
