@@ -44,6 +44,22 @@ runTests = (CoffeeScript) ->
       e.source      = fn.toString() if fn.toString?
       failures.push file: currentFile, error: e
 
+  # A recursive functional equivalence helper; uses egal for testing equivalence.
+  # See http://wiki.ecmascript.org/doku.php?id=harmony:egal
+  arrayEqual = (a, b) ->
+    if a is b
+      # 0 isnt -0
+      a isnt 0 or 1/a is 1/b
+    else if a instanceof Array and b instanceof Array
+      return no unless a.length is b.length
+      return no for el, idx in a when not arrayEqual el, b[idx]
+      yes
+    else
+      # NaN is NaN
+      a isnt a and b isnt b
+
+  global.arrayEq = (a, b, msg) -> ok arrayEqual(a,b), msg
+
   # When all the tests have run, collect and print errors.
   # If a stacktrace is available, output the compiled function source.
   process.on 'exit', ->

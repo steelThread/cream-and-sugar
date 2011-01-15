@@ -8,7 +8,7 @@
 {Types} = require './types'
 
 #
-#  Creates a function with bound args for later execution wiht
+#  Creates a function with bound args for later execution with
 #  global scope.  Need a scoped callback then check out 
 #  createDelegate
 #
@@ -23,32 +23,45 @@ unless Function::createCallback?
 #  supports either overriding or appending of arguments onto
 #  the call.
 #
-#unless Function::createDelegate?
-#  Function::createCallback = ->
-#    args = arguments
-#    scope = args
-#    fn = this
-#    return -> return fn.apply this, args
-  
+join = (arguments, args) ->
+  Array::slice.call(arguments, 0).concat args
+ 
+unless Function::createDelegate?
+  Function::createDelegate = (scope = global, args = [], append = false) ->
+    me = this
+    -> me.apply scope, if append then join arguments, args else args 
+    
 #
+#  Creates an interceptor function. The passed function
+#  will act as the interceptor.  The interceptor can
+#  stop the chain by returning false.  The returned
+#  value of the resulting function returns the value of
+#  the intercepted function.
 #
+unless Function::createInterceptor?
+  Function::createInterceptor = (fn, scope = global) ->
+    me = this
+    if not Types.isFunction fn then me
+    else ->
+      if fn.apply(scope, arguments) isnt false
+        me.apply this ? global, arguments
+
 #
-#unless Function::createInterceptor?
-          
+#  Create an advisor.  Similar to an interceptor except may
+#  change the arguments and return values of the advised
+#  function
+#         
+#unless Function::createAdvisor?
+
+
 #
 # create a sequence using an optional scope
 #
 unless Function::createSequence?
-  Function::createSequence = (fn, scope) ->
+  Function::createSequence = (fn, scope = global) ->
     me = this
-    unless Types.isFunction fn
-      me
+    if not Types.isFunction fn then me
     else ->
       ret = me.apply this ? global, arguments 
-      fn.apply scope ? this ? global, arguments
+      fn.apply scope, arguments
       ret
-#
-#
-#
-#unless Function::defer?
-  
